@@ -1,0 +1,5 @@
+/vendor/
+/cache/
+silex.log
+composer.lock
+
