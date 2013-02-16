@@ -2,4 +2,4 @@
 /cache/
 silex.log
 composer.lock
-
+.DS_Store
