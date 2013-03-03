@@ -38,6 +38,18 @@
             </li>
             <li class="toggle-topbar"><a href="{{ path('homepage') }}">Show me the code</a></li>
         </ul>
+        <section class="top-bar-section">
+            <!-- Left Nav Section -->
+            <ul class="left">
+                <li class="divider"></li>
+                <li class="has-dropdown"><a href="#">Examples</a>
+                    <ul class="dropdown">
+                        <li><a href="{{ path('pagerfanta') }}">Pagination</a></li>
+                    </ul>
+                </li>
+                <li class="divider"></li>
+            </ul>
+        </section>
     </nav>
 
     {% block content %}{% endblock %}
