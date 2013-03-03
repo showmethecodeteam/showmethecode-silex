@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="row">
+        <div class="twelve columns">
+            <table>
+                <tr>
+                    <th>Id</th>
+                    <th>First name</th>
+                    <th>Last name</th>
+                    <th>Address</th>
+                </tr>
+                {% for result in pager %}
+                    <tr>
+                        <td>{{ result.id }}</td>
+                        <td>{{ result.firstName }}</td>
+                        <td>{{ result.lastName }}</td>
+                        <td>{{ result.address }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+            {{ pagerfanta(pager)|raw }}
+        </div>
+      </div>
+{% endblock %}
