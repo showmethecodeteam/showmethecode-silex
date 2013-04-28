@@ -8,14 +8,20 @@
                     <th>Id</th>
                     <th>First name</th>
                     <th>Last name</th>
-                    <th>Address</th>
+                    <th>Addresses</th>
                 </tr>
                 {% for result in pager %}
                     <tr>
                         <td>{{ result.id }}</td>
                         <td>{{ result.firstName }}</td>
                         <td>{{ result.lastName }}</td>
-                        <td>{{ result.address }}</td>
+                        <td>
+                            <ul class="no-bullet">
+                                {% for address in result.addresses|split("|") %}
+                                    <li>{{ address }}</li>
+                                {% endfor %}
+                            </ul>
+                        </td>
                     </tr>
                 {% endfor %}
             </table>

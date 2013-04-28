@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 $app->get('/pagerfanta', function (Request $request) use ($app) {
-    $results = $app['smtc.service.fake']->getResults();
+    $results = $app['smtc.manager.user']->findAll();
 
     $page = $request->query->get('page', 1);
     $pagerfanta = $app['pagerfanta.pager_factory']->getForArray($results)

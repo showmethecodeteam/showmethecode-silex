@@ -19,7 +19,8 @@
         "symfony/twig-bridge": "~2.2",
         "symfony/validator": "~2.2",
         "franmomu/silex-pagerfanta-provider": "1.0.*@dev",
-        "fzaninotto/faker": "1.1.*@dev"
+        "fzaninotto/faker": "1.1.*@dev",
+        "franmomu/silex-paris-provider": "1.0.*@dev"
     },
     "autoload": {
         "psr-0": { "": "src/" }

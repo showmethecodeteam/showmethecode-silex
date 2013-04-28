@@ -6,7 +6,9 @@ use Silex\Provider\UrlGeneratorServiceProvider;
 use Silex\Provider\ValidatorServiceProvider;
 use Silex\Provider\ServiceControllerServiceProvider;
 use FranMoreno\Silex\Provider\PagerfantaServiceProvider;
+use FranMoreno\Silex\Provider\ParisServiceProvider;
 use SMTC\Silex\Service\FakeService;
+use SMTC\Silex\Service\UserManager;
 
 $app = new Application();
 $app->register(new UrlGeneratorServiceProvider());
@@ -24,7 +26,7 @@ $app['twig'] = $app->share($app->extend('twig', function($twig, $app) {
 
 $app->register(new PagerfantaServiceProvider(), array(
     'pagerfanta.view.options'  => array(
-        'default_view'  => 'foundation'
+        'default_view'  => 'foundation',
     )
 ));
 
@@ -40,6 +42,17 @@ $app['smtc.service.fake'] = $app->share(function ($app) {
     $seed = 123;
 
     return new FakeService($seed);
+});
+
+$app->register(new ParisServiceProvider(), array(
+    'idiorm.config'  => array(
+        'connection_string'  => 'sqlite:'.__DIR__.'/../cache/database.db',
+    ),
+    'paris.model.prefix' => "\\SMTC\\Silex\\Model\\",
+));
+
+$app['smtc.manager.user'] = $app->share(function ($app) {
+    return new UserManager($app['paris']->getModel('User'));
 });
 
 return $app;
